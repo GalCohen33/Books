@@ -1,0 +1,17 @@
+
+<div>
+    Last update: {{(books$ | async)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}
+</div>
+
+<div *ngIf="(books$ | async) != null">
+    <div *ngFor="let book of (books$ | async)?.books">
+        <div>
+            {{book.id}}
+            {{book.title}}
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary m-3" type="button" (click)="addBook()">Add</button>
+<button class="btn btn-primary m-3" type="button" (click)="deleteBook()">Remove</button>
+<button class="btn btn-primary m-3" type="button" (click)="updateBook()">Update</button>
