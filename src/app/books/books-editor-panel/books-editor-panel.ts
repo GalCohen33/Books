@@ -23,7 +23,7 @@ export class BooksEditorPanel implements OnInit {
 
   addBook(){
     let book:Book = {
-      id:"xx-xx-xx",
+      id:"132132",
       publishingYear:"",
       title:""
     };
@@ -32,12 +32,12 @@ export class BooksEditorPanel implements OnInit {
   }
 
   deleteBook(){
-     this.store.dispatch(booksActions.removeBook({bookId:"123123"}));
+     this.store.dispatch(booksActions.removeBook({bookId:"132132"}));
   }
 
   updateBook(){
     let book:Book = {
-      id:"123123",
+      id:"132132",
       publishingYear:"2018",
       title:"catss"
     };
