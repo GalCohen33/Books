@@ -12,7 +12,7 @@ import * as AppStore from "../../app-state/app.reducer";
   styleUrls: ['./book-display.component.css']
 })
 export class BookDisplayComponent implements OnInit {
-  @Input() book:Book | undefined;
+  @Input() book$:Book | undefined;
 
   constructor(private dialog: MatDialog,private store:Store<AppStore.AppState>) { }
 
@@ -23,16 +23,17 @@ export class BookDisplayComponent implements OnInit {
     let dialogRef = this.dialog.open(EditBookComponent, {
       height: '400px',
       width: '600px',
-      data: {...this.book}
+      data: {...this.book$}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if(result)
+        this.store.dispatch(booksActions.updateBook({book:result}));
     });
   }
 
   onDelete(){
-    this.store.dispatch(booksActions.removeBook({bookId:this.book? this.book.id : ""}));
+    this.store.dispatch(booksActions.removeBook({bookId:this.book$? this.book$.id : ""}));
   }
 
 
