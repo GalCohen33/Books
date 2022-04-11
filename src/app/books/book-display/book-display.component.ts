@@ -23,7 +23,7 @@ export class BookDisplayComponent implements OnInit {
     let dialogRef = this.dialog.open(EditBookComponent, {
       height: '400px',
       width: '600px',
-      data: this.book
+      data: {...this.book}
     });
 
     dialogRef.afterClosed().subscribe(result => {

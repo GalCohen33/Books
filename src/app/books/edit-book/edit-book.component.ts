@@ -23,8 +23,13 @@ export class EditBookComponent implements OnInit {
     if(!f.valid)
       return;
 
+    this.dialogRef.close(this.book);
     //state change -> update
 
+  }
+
+  closeDialog() {
+    this.dialogRef.close('Pizza!');
   }
 
 }
