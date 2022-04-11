@@ -28,12 +28,12 @@ export class EditRepositoryComponent implements OnInit {
 
   addBook(){
     let book:Book = {
-      id:"123123",
-      publishingYear:"2012",
-      title:"cats"
+      id:"144141",
+      publishingYear:"2016",
+      title:"dawdawd"
     };
 
-    this.store.dispatch(booksActions.addBook({book}));
+    this.store.dispatch(booksActions.addBook({book}))
   }
 
   deleteBook(){
