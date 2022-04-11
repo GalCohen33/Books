@@ -28,9 +28,9 @@ export class EditRepositoryComponent implements OnInit {
 
   addBook(){
     let book:Book = {
-      id:"144141",
-      publishingYear:"2016",
-      title:"dawdawd"
+      id:"xx-xx-xx",
+      publishingYear:"",
+      title:""
     };
 
     this.store.dispatch(booksActions.addBook({book}))

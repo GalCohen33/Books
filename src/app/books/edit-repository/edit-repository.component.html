@@ -19,7 +19,7 @@
 
 <div>
   {{bookModel | json}}
-    Last update: {{(bookModel)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}
+<!--    Last update: {{(bookModel)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}-->
 </div>
 <br>
 
@@ -32,17 +32,17 @@
       <div *ngFor="let book of bookModel?.books let i = index" class="row">
         <div class="form-group col-2">
 <!--          <label>Book id</label>-->
-          <input type="text" class="form-control" required [(ngModel)]="book.id" name="bookId" id="bookId" #bookId="ngModel" >
+          <input type="text" class="form-control" required [(ngModel)]="book.id" name="bookId_{{i}}" id="bookId_{{i}}" #bookId_{{i}}="ngModel" >
           <div class="invalid-feedback">
-            <div *ngIf="loginForm.submitted && bookId.errors">שדה חובה</div>
+<!--            <div *ngIf="loginForm.submitted && bookId.errors">שדה חובה</div>-->
           </div>
         </div>
 
         <div class="form-group col-4">
 <!--          <label>Title</label>-->
-          <input type="text" class="form-control" required [(ngModel)]="book.title" name="title" id="title" #title="ngModel" >
+          <input type="text" class="form-control" required [(ngModel)]="book.title" name="title_{{i}}" id="title_{{i}}" #title_{{i}}="ngModel" >
           <div class="invalid-feedback">
-            <div *ngIf="loginForm.submitted && title.errors">שדה חובה</div>
+<!--            <div *ngIf="loginForm.submitted && title.errors">שדה חובה</div>-->
           </div>
         </div>
 
@@ -50,10 +50,10 @@
         <div class="form-group col-1">
 <!--          <label>Publishing year</label>-->
           <div class="d-block w-100">
-            <input type="text" class="form-control" required minlength="4" maxlength="4" [(ngModel)]="book.publishingYear" name="email" id="publishingYear" #publishingYear="ngModel" >
+            <input type="text" class="form-control" required minlength="4" maxlength="4" [(ngModel)]="book.publishingYear" name="email_{{i}}" id="publishingYear_{{i}}}" #publishingYear_{{i}}="ngModel" >
           </div>
           <div class="invalid-feedback">
-            <div *ngIf="loginForm.submitted && title.errors">שדה חובה</div>
+<!--            <div *ngIf="loginForm.submitted && publishingYear.errors">שדה חובה</div>-->
           </div>
         </div>
 
