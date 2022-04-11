@@ -1,17 +1,73 @@
 
+
+
+<!--<div *ngIf="(books$ | async) != null">-->
+<!--    <div *ngFor="let book of (books$ | async)?.books">-->
+<!--        <div>-->
+<!--            {{book.id}}-->
+<!--            {{book.title}}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<button class="btn btn-primary m-3" type="button" (click)="addBook()">Add</button>-->
+<!--<button class="btn btn-primary m-3" type="button" (click)="deleteBook()">Remove</button>-->
+<!--<button class="btn btn-primary m-3" type="button" (click)="updateBook()">Update</button>-->
+
+
+
+
 <div>
-    Last update: {{(books$ | async)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}
+    Last update: {{(bookModel)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}
 </div>
+<br>
 
-<div *ngIf="(books$ | async) != null">
-    <div *ngFor="let book of (books$ | async)?.books">
-        <div>
-            {{book.id}}
-            {{book.title}}
+<form #loginForm="ngForm" (submit)="submit(loginForm)">
+
+
+
+  <div class="container">
+    <div *ngIf="bookModel">
+      <div *ngFor="let book of bookModel.books let i = index" class="row">
+        <div class="form-group col-2">
+<!--          <label>Book id</label>-->
+          <input type="text" class="form-control" required [(ngModel)]="book.id" name="bookId" id="bookId" #bookId="ngModel" >
+          <div class="invalid-feedback">
+            <div *ngIf="loginForm.submitted && bookId.errors">שדה חובה</div>
+          </div>
         </div>
-    </div>
-</div>
 
-<button class="btn btn-primary m-3" type="button" (click)="addBook()">Add</button>
-<button class="btn btn-primary m-3" type="button" (click)="deleteBook()">Remove</button>
-<button class="btn btn-primary m-3" type="button" (click)="updateBook()">Update</button>
+        <div class="form-group col-4">
+<!--          <label>Title</label>-->
+          <input type="text" class="form-control" required [(ngModel)]="book.title" name="title" id="title" #title="ngModel" >
+          <div class="invalid-feedback">
+            <div *ngIf="loginForm.submitted && title.errors">שדה חובה</div>
+          </div>
+        </div>
+
+
+        <div class="form-group col-1">
+<!--          <label>Publishing year</label>-->
+          <div class="d-block w-100">
+            <input type="text" class="form-control" required minlength="4" maxlength="4" [(ngModel)]="book.publishingYear" name="email" id="publishingYear" #publishingYear="ngModel" >
+          </div>
+          <div class="invalid-feedback">
+            <div *ngIf="loginForm.submitted && title.errors">שדה חובה</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+            <div class="form-group">
+              <label>publishingYear</label>
+              <div class="d-block w-100">
+                <button type="submit" class="btn btn-primary">Login </button>
+              </div>
+            </div>
+  </div>
+</form>
+
+
+
+

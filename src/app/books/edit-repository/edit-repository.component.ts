@@ -5,6 +5,7 @@ import * as AppStore from 'src/app/app-state/app.reducer';
 import { Book } from '../models/book.model';
 import * as booksActions from '../state/books.actions';
 import { booksState } from '../state/books.reducer';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-edit-repository',
@@ -12,19 +13,25 @@ import { booksState } from '../state/books.reducer';
   styleUrls: ['./edit-repository.component.css']
 })
 export class EditRepositoryComponent implements OnInit {
-  books$:Observable<booksState> | undefined 
+  //books$:Observable<booksState> | undefined
+  bookModel: booksState | undefined;
   constructor(private store:Store<AppStore.AppState>) { }
 
   ngOnInit(): void {
-    this.books$ = this.store.select('books');
+    this.store.select('books').subscribe(
+      res=>{
+        if(res)
+          this.bookModel = res;
+      }
+    );
   }
 
   addBook(){
     let book:Book = {
-      id:"123123", 
+      id:"123123",
       publishingYear:"2012",
       title:"cats"
-    }; 
+    };
 
     this.store.dispatch(booksActions.addBook({book}));
   }
@@ -35,13 +42,20 @@ export class EditRepositoryComponent implements OnInit {
 
   updateBook(){
     let book:Book = {
-      id:"123123", 
+      id:"123123",
       publishingYear:"2018",
       title:"catss"
-    }; 
+    };
     this.store.dispatch(booksActions.updateBook({book}));
   }
 
 
+  submit(f:NgForm){
+    if(!f.valid)
+      return;
+
+    //state change -> update
+
+  }
 
 }
