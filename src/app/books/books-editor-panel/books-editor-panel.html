@@ -3,11 +3,11 @@
 
 <div *ngIf="(books$ | async) != null">
     <div *ngFor="let book of (books$ | async)?.books; trackBy:indexTracker">
-        <app-book-edit [book]="book"></app-book-edit>
+        <app-book-display [book]="book"></app-book-display>
     </div>
 </div>
 
-<button class="btn btn-primary mt-3" type="button" (click)="addBook()">Add</button>
+<button class="btn btn-secondary mt-3" type="button" (click)="addBook()"><i class="bi bi-file-earmark-plus"></i> Add new</button>
 <!--<button class="btn btn-primary m-3" type="button" (click)="deleteBook()">Remove</button>-->
 <!--<button class="btn btn-primary m-3" type="button" (click)="updateBook()">Update</button>-->
 

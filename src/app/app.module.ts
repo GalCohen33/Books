@@ -7,13 +7,13 @@ import { AppComponent } from './app.component';
 import { BooksEditorPanel } from './books/books-editor-panel/books-editor-panel';
 import * as appState from "./app-state/app.reducer"
 import {FormsModule} from "@angular/forms";
-import { BookEditComponent } from './books/book-edit/book-edit.component';
+import { BookDisplayComponent } from './books/book-display/book-display.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({  declarations: [
     AppComponent,
     BooksEditorPanel,
-    BookEditComponent
+    BookDisplayComponent
   ],
     imports: [
         BrowserModule,
