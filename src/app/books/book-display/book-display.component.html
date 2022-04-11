@@ -1,49 +1,44 @@
-<form #loginForm="ngForm" (submit)="submit(loginForm)">
+<div class="row align-items-center">
+  <div class="form-group col-2">
+    <button type="button" class="btn btn-danger me-2" (click)="onDelete()">
+      <i class="bi bi-trash"></i>
+      Delete
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="onEdit()">
+      <i class="bi bi-pencil-square"></i>
+      Edit
+    </button>
 
+  </div>
 
+  <div class="form-group col-1">
+    {{book.id}}
+    <!--            <input type="text" class="form-control" required [(ngModel)]="book.id" name="bookId" id="bookId" #bookId="ngModel" >-->
+    <!--            <div class="invalid-feedback">-->
+    <!--              <div *ngIf="loginForm.submitted && bookId.errors">שדה חובה</div>-->
+    <!--            </div>-->
+  </div>
 
-    <div class="row align-items-center">
-      <div class="form-group col-2">
-        <button type="button" class="btn btn-danger me-2">
-          <i class="bi bi-trash"></i>
-          Delete
-        </button>
-        <button type="button" class="btn btn-secondary">
-          <i class="bi bi-pencil-square"></i>
-          Edit
-      </button>
+  <div class="form-group col-4">
+    {{book.title}}
+    <!--            <input type="text" class="form-control" required [(ngModel)]="book.title" name="title" id="title" #title="ngModel" >-->
+    <!--            <div class="invalid-feedback">-->
+    <!--              <div *ngIf="loginForm.submitted && title.errors">שדה חובה</div>-->
+    <!--            </div>-->
+  </div>
 
-      </div>
+  <div class="form-group col-1">
+    {{book.publishingYear}}
+    <!--            <div class="d-block w-100">-->
+    <!--              <input type="text" class="form-control" required minlength="4" maxlength="4" [(ngModel)]="book.publishingYear" name="publishingYear" id="publishingYear" #publishingYear="ngModel" >-->
+    <!--            </div>-->
+    <!--            <div class="invalid-feedback">-->
+    <!--              <div *ngIf="loginForm.submitted && publishingYear.errors">שדה חובה</div>-->
+    <!--            </div>-->
+    <!--          </div>-->
+  </div>
+</div>
 
-          <div class="form-group col-1">
-            {{book.id}}
-<!--            <input type="text" class="form-control" required [(ngModel)]="book.id" name="bookId" id="bookId" #bookId="ngModel" >-->
-<!--            <div class="invalid-feedback">-->
-<!--              <div *ngIf="loginForm.submitted && bookId.errors">שדה חובה</div>-->
-<!--            </div>-->
-          </div>
-
-          <div class="form-group col-4">
-            {{book.title}}
-<!--            <input type="text" class="form-control" required [(ngModel)]="book.title" name="title" id="title" #title="ngModel" >-->
-<!--            <div class="invalid-feedback">-->
-<!--              <div *ngIf="loginForm.submitted && title.errors">שדה חובה</div>-->
-<!--            </div>-->
-          </div>
-
-
-          <div class="form-group col-1">
-            {{book.publishingYear}}
-<!--            <div class="d-block w-100">-->
-<!--              <input type="text" class="form-control" required minlength="4" maxlength="4" [(ngModel)]="book.publishingYear" name="publishingYear" id="publishingYear" #publishingYear="ngModel" >-->
-<!--            </div>-->
-<!--            <div class="invalid-feedback">-->
-<!--              <div *ngIf="loginForm.submitted && publishingYear.errors">שדה חובה</div>-->
-<!--            </div>-->
-<!--          </div>-->
-        </div>
-    </div>
-</form>
 
 
 

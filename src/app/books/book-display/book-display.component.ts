@@ -1,6 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Book} from "../models/book.model";
-import {NgForm} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {EditBookComponent} from "../edit-book/edit-book.component";
+import * as booksActions from "../state/books.actions";
+import {Store} from "@ngrx/store";
+import * as AppStore from "../../app-state/app.reducer";
 
 @Component({
   selector: 'app-book-display',
@@ -10,18 +14,28 @@ import {NgForm} from "@angular/forms";
 export class BookDisplayComponent implements OnInit {
   @Input() book:Book | undefined;
 
-  constructor() { }
+  constructor(private dialog: MatDialog,private store:Store<AppStore.AppState>) { }
 
   ngOnInit(): void {
   }
 
+  onEdit(){
+    let dialogRef = this.dialog.open(EditBookComponent, {
+      height: '400px',
+      width: '600px',
+      data: this.book
+    });
 
-  submit(f:NgForm){
-    if(!f.valid)
-      return;
-
-    //state change -> update
-
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
+
+  onDelete(){
+    this.store.dispatch(booksActions.removeBook({bookId:this.book? this.book.id : ""}));
+  }
+
+
+
 
 }
