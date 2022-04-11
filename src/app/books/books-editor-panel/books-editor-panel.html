@@ -29,7 +29,7 @@
 
   <div class="container">
 
-      <div *ngFor="let book of bookModel?.books let i = index" class="row">
+      <div *ngFor="let book of bookModel?.books; let i = index; trackBy:indexTracker" class="row">
         <div class="form-group col-2">
 <!--          <label>Book id</label>-->
           <input type="text" class="form-control" required [(ngModel)]="book.id" name="bookId_{{i}}" id="bookId_{{i}}" #bookId_{{i}}="ngModel" >

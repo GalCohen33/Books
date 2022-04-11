@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditRepositoryComponent } from './books/edit-repository/edit-repository.component';
+import { BooksEditorPanel } from './books/books-editor-panel/books-editor-panel';
 
 const routes: Routes = [
-  { path: 'edit', component: EditRepositoryComponent },
+  { path: 'edit', component: BooksEditorPanel },
   { path: '', redirectTo: 'edit' ,pathMatch: 'full' },
 ];
 

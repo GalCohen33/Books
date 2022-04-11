@@ -8,11 +8,11 @@ import { booksState } from '../state/books.reducer';
 import {NgForm} from "@angular/forms";
 
 @Component({
-  selector: 'app-edit-repository',
-  templateUrl: './edit-repository.component.html',
-  styleUrls: ['./edit-repository.component.css']
+  selector: 'app-books-editor-panel',
+  templateUrl: './books-editor-panel.html',
+  styleUrls: ['./books-editor-panel.css']
 })
-export class EditRepositoryComponent implements OnInit {
+export class BooksEditorPanel implements OnInit {
   //books$:Observable<booksState> | undefined
   bookModel: booksState | undefined;
   constructor(private store:Store<AppStore.AppState>) { }
@@ -56,6 +56,10 @@ export class EditRepositoryComponent implements OnInit {
 
     //state change -> update
 
+  }
+
+  indexTracker(index: number, value: any) {
+    return index;
   }
 
 }
