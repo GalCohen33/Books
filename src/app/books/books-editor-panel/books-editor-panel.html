@@ -1,5 +1,5 @@
 
-    Last update: {{(bookModel)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}
+<!--    Last update: {{(bookModel)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}-->
 
 <div *ngIf="(books$ | async) != null">
     <div *ngFor="let book of (books$ | async)?.books; trackBy:indexTracker">
@@ -7,9 +7,9 @@
     </div>
 </div>
 
-<button class="btn btn-primary m-3" type="button" (click)="addBook()">Add</button>
-<button class="btn btn-primary m-3" type="button" (click)="deleteBook()">Remove</button>
-<button class="btn btn-primary m-3" type="button" (click)="updateBook()">Update</button>
+<button class="btn btn-primary mt-3" type="button" (click)="addBook()">Add</button>
+<!--<button class="btn btn-primary m-3" type="button" (click)="deleteBook()">Remove</button>-->
+<!--<button class="btn btn-primary m-3" type="button" (click)="updateBook()">Update</button>-->
 
 
 
