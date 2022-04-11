@@ -13,17 +13,12 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./books-editor-panel.css']
 })
 export class BooksEditorPanel implements OnInit {
-  //books$:Observable<booksState> | undefined
+  books$:Observable<booksState> | undefined
   bookModel: booksState | undefined;
   constructor(private store:Store<AppStore.AppState>) { }
 
   ngOnInit(): void {
-    this.store.select('books').subscribe(
-      res=>{
-        if(res)
-          this.bookModel = res;
-      }
-    );
+    this.books$ = this.store.select('books');
   }
 
   addBook(){
@@ -37,7 +32,7 @@ export class BooksEditorPanel implements OnInit {
   }
 
   deleteBook(){
-    this.store.dispatch(booksActions.removeBook({bookId:"123123"}));
+     this.store.dispatch(booksActions.removeBook({bookId:"123123"}));
   }
 
   updateBook(){
@@ -50,13 +45,6 @@ export class BooksEditorPanel implements OnInit {
   }
 
 
-  submit(f:NgForm){
-    if(!f.valid)
-      return;
-
-    //state change -> update
-
-  }
 
   indexTracker(index: number, value: any) {
     return index;

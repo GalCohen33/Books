@@ -1,72 +1,21 @@
 
+    Last update: {{(bookModel)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}
 
-
-<!--<div *ngIf="(books$ | async) != null">-->
-<!--    <div *ngFor="let book of (books$ | async)?.books">-->
-<!--        <div>-->
-<!--            {{book.id}}-->
-<!--            {{book.title}}-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--<button class="btn btn-primary m-3" type="button" (click)="addBook()">Add</button>-->
-<!--<button class="btn btn-primary m-3" type="button" (click)="deleteBook()">Remove</button>-->
-<!--<button class="btn btn-primary m-3" type="button" (click)="updateBook()">Update</button>-->
-
-
-
-
-<div>
-  {{bookModel | json}}
-<!--    Last update: {{(bookModel)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}-->
-</div>
-<br>
-
-<form #loginForm="ngForm" (submit)="submit(loginForm)">
-
-
-
-  <div class="container">
-
-      <div *ngFor="let book of bookModel?.books; let i = index; trackBy:indexTracker" class="row">
-        <div class="form-group col-2">
-<!--          <label>Book id</label>-->
-          <input type="text" class="form-control" required [(ngModel)]="book.id" name="bookId_{{i}}" id="bookId_{{i}}" #bookId_{{i}}="ngModel" >
-          <div class="invalid-feedback">
-<!--            <div *ngIf="loginForm.submitted && bookId.errors">שדה חובה</div>-->
-          </div>
-        </div>
-
-        <div class="form-group col-4">
-<!--          <label>Title</label>-->
-          <input type="text" class="form-control" required [(ngModel)]="book.title" name="title_{{i}}" id="title_{{i}}" #title_{{i}}="ngModel" >
-          <div class="invalid-feedback">
-<!--            <div *ngIf="loginForm.submitted && title.errors">שדה חובה</div>-->
-          </div>
-        </div>
-
-
-        <div class="form-group col-1">
-<!--          <label>Publishing year</label>-->
-          <div class="d-block w-100">
-            <input type="text" class="form-control" required minlength="4" maxlength="4" [(ngModel)]="book.publishingYear" name="email_{{i}}" id="publishingYear_{{i}}}" #publishingYear_{{i}}="ngModel" >
-          </div>
-          <div class="invalid-feedback">
-<!--            <div *ngIf="loginForm.submitted && publishingYear.errors">שדה חובה</div>-->
-          </div>
-        </div>
-
-      </div>
+<div *ngIf="(books$ | async) != null">
+    <div *ngFor="let book of (books$ | async)?.books; trackBy:indexTracker">
+        <app-book-edit [book]="book"></app-book-edit>
     </div>
+</div>
 
-            <div class="form-group">
-              <div class="d-block w-100">
-                <button class="btn btn-primary m-3" type="button" (click)="addBook()">Add</button>
-                <button type="submit" class="btn btn-primary">submit </button>
-              </div>
-            </div>
-</form>
+<button class="btn btn-primary m-3" type="button" (click)="addBook()">Add</button>
+<button class="btn btn-primary m-3" type="button" (click)="deleteBook()">Remove</button>
+<button class="btn btn-primary m-3" type="button" (click)="updateBook()">Update</button>
+
+
+
+
+
+
 
 
 
