@@ -5,7 +5,8 @@ import * as AppStore from 'src/app/app-state/app.reducer';
 import { Book } from '../models/book.model';
 import * as booksActions from '../state/books.actions';
 import { booksState } from '../state/books.reducer';
-import {NgForm} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {EditBookComponent} from "../edit-book/edit-book.component";
 
 @Component({
   selector: 'app-books-editor-panel',
@@ -15,20 +16,40 @@ import {NgForm} from "@angular/forms";
 export class BooksEditorPanel implements OnInit {
   books$:Observable<booksState> | undefined
   bookModel: booksState | undefined;
-  constructor(private store:Store<AppStore.AppState>) { }
+  constructor(private store:Store<AppStore.AppState>,private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.books$ = this.store.select('books');
   }
+  //
+  // addBook(){
+  //   let book:Book = {
+  //     id:"132132",
+  //     publishingYear:"",
+  //     title:""
+  //   };
+  //
+  //   this.store.dispatch(booksActions.addBook({book}))
+  // }
 
   addBook(){
-    let book:Book = {
-      id:"132132",
-      publishingYear:"",
-      title:""
-    };
 
-    this.store.dispatch(booksActions.addBook({book}))
+      let book:Book = {
+        id:"132132",
+        publishingYear:"",
+        title:""
+      };
+
+    let dialogRef = this.dialog.open(EditBookComponent, {
+      height: '400px',
+      width: '600px',
+      data: {book}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result)
+        this.store.dispatch(booksActions.updateBook({book:result}));
+    });
   }
 
   deleteBook(){
@@ -46,7 +67,7 @@ export class BooksEditorPanel implements OnInit {
 
 
 
-  indexTracker(index: number, value: any) {
+  indexTracker(index: number) {
     return index;
   }
 

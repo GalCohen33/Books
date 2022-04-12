@@ -1,7 +1,9 @@
 <form #loginForm="ngForm" (submit)="submit(loginForm)">
 
 
-  <span mat-dialog-title>Edit</span>
+  <span mat-dialog-title>Edit
+  <button class="float-end" mat-raised-button color="basic" [mat-dialog-close]="true"><i class="bi bi-x-circle"></i></button>
+  </span>
   <mat-divider></mat-divider>
   <div class="row mt-2">
     <div class="form-group col-10">
@@ -22,7 +24,12 @@
     </div>
   </div>
 
-  <button class="float-start" mat-raised-button color="primary" (click)="submit(loginForm)">submit</button>
-  <button class="float-end" mat-raised-button color="basic" [mat-dialog-close]="true">close</button>
+
+  <button class="float-end" mat-raised-button color="primary" (click)="submit(loginForm)"><i class="bi bi-box-arrow-in-right"></i></button>
+  <button type="button" mat-raised-button color="basic" class="float-end" (click)="onDelete()">
+    <i class="bi bi-trash"></i>
+  </button>
+
+
 
 </form>
