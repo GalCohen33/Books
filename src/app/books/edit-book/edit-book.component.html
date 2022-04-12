@@ -6,7 +6,7 @@
   </span>
   <mat-divider></mat-divider>
   <div class="row mt-2">
-    <div class="form-group col-10">
+    <div class="form-group col">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Id</mat-label>
         <input matInput placeholder="book id" [(ngModel)]="book.id" name="bookId"
@@ -14,7 +14,7 @@
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Book title</mat-label>
-        <input matInput placeholder="publishing year" [(ngModel)]="book.title" name="title" #title="ngModel">
+        <input matInput placeholder="book title" [(ngModel)]="book.title" name="title" #title="ngModel">
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Publishing year</mat-label>

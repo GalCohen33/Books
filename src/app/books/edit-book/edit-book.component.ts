@@ -27,7 +27,10 @@ export class EditBookComponent implements OnInit {
     if(!f.valid)
       return;
 
-    this.dialogRef.close(this.book)
+    this.store.dispatch(booksActions.addBook({book:this.book}));
+    //this.store.dispatch(booksActions.updateBook({book:this.book}));
+
+    this.dialogRef.close(this.book);
     //state change -> update
 
   }

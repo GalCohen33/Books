@@ -21,14 +21,16 @@ export class BookDisplayComponent implements OnInit {
 
   onEdit(){
     let dialogRef = this.dialog.open(EditBookComponent, {
-      height: '400px',
-      width: '600px',
+      // height: '400px',
+      // width: '600px',
       data: {...this.book$}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result)
-        this.store.dispatch(booksActions.updateBook({book:result}));
+      if(result){
+        //todo ..
+      }
+
     });
   }
 
