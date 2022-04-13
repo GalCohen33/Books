@@ -26,7 +26,7 @@
 
 
   <button class="float-end" mat-raised-button color="primary" (click)="submit(loginForm)"><i class="bi bi-box-arrow-in-right"></i></button>
-  <button type="button" mat-raised-button color="basic" class="float-end" (click)="onDelete()">
+  <button *ngIf="editorState != 'add'" type="button" mat-raised-button color="basic" class="float-end" (click)="onDelete()">
     <i class="bi bi-trash"></i>
   </button>
 
