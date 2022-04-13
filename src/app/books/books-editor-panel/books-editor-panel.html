@@ -1,7 +1,7 @@
 <!--    Last update: {{(bookModel)?.lastUpdate | date:'dd/MM/yyyy HH:mm'}}-->
 
-<div *ngIf="(books$ | async) != null">
-  <div *ngFor="let book of (books$ | async)?.books; trackBy:indexTracker">
+<div *ngIf="(books$ | async) != null" class="row">
+  <div *ngFor="let book of (books$ | async)?.books; trackBy:indexTracker" class="col-4 mt-3" >
     <app-book-display [book$]="book"></app-book-display>
   </div>
 </div>
