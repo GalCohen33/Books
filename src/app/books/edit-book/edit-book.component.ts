@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Book} from "../models/book.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import  {MatStepper} from "@angular/material/stepper";
 import * as booksActions from "../state/books.actions";
 import {Store} from "@ngrx/store";
 import * as AppStore from "../../app-state/app.reducer";
@@ -26,23 +27,30 @@ export class EditBookComponent implements OnInit {
     this.subscribeEditorState();
   }
 
-  submit(f:NgForm){
-    if(!f.valid)
+  submit(f:NgForm, stepper:MatStepper){
+    if(!f.valid) //todo
       return;
 
+    stepper.next();
+  }
+
+  onDelete(stepper:MatStepper){
+    let editorState :booksEditorState = {
+      operation:"delete"
+    }
+    this.store.dispatch(booksActions.editorAction({editorState}));
+    stepper.next();
+  }
+
+  confirm(){
     if(this.editorState == "add")
       this.store.dispatch(booksActions.addBook({book:this.book}));
     else if(this.editorState == "edit")
       this.store.dispatch(booksActions.updateBook({book:this.book}));
+    else if (this.editorState == "delete")
+      this.store.dispatch(booksActions.removeBook({bookId: this.book.id}));
 
-    this.dialogRef.close(this.book);
-    //state change -> update
-
-  }
-
-  onDelete(){
-    this.store.dispatch(booksActions.removeBook({bookId: this.book.id}));
-    this.dialogRef.close();
+     this.dialogRef.close();
   }
 
   subscribeEditorState(){
