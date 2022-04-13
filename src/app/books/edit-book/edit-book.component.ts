@@ -5,6 +5,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import * as booksActions from "../state/books.actions";
 import {Store} from "@ngrx/store";
 import * as AppStore from "../../app-state/app.reducer";
+import {booksEditorState, booksState} from "../state/books.reducer";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-edit-book',
@@ -12,7 +14,7 @@ import * as AppStore from "../../app-state/app.reducer";
   styleUrls: ['./edit-book.component.css']
 })
 export class EditBookComponent implements OnInit {
-  //book:Book | undefined;
+  editorState:string | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<EditBookComponent>,
@@ -21,28 +23,36 @@ export class EditBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.subscribeEditorState();
   }
 
   submit(f:NgForm){
     if(!f.valid)
       return;
 
-    this.store.dispatch(booksActions.addBook({book:this.book}));
-    //this.store.dispatch(booksActions.updateBook({book:this.book}));
+    if(this.editorState == "add")
+      this.store.dispatch(booksActions.addBook({book:this.book}));
+    else if(this.editorState == "edit")
+      this.store.dispatch(booksActions.updateBook({book:this.book}));
 
     this.dialogRef.close(this.book);
     //state change -> update
 
   }
 
-
   onDelete(){
     this.store.dispatch(booksActions.removeBook({bookId: this.book.id}));
+    this.dialogRef.close();
   }
 
-
-  closeDialog() {
-
+  subscribeEditorState(){
+     this.store.select('books').subscribe(
+      res=>{
+        if(res){
+          this.editorState = res.editorState.operation;
+        }
+      }
+    );
   }
 
 }

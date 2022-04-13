@@ -1,5 +1,6 @@
 import { createAction, props, Action } from '@ngrx/store';
 import { Book } from '../models/book.model'
+import {booksEditorState} from "./books.reducer";
 
 export const addBook = createAction(
   '[Book] Add Book',
@@ -14,6 +15,11 @@ export const removeBook = createAction(
 export const updateBook = createAction(
   '[Book] Update Book',
   props<{ book:Book}>()
+);
+
+export const editorAction = createAction(
+  '[Book] Editor action',
+  props<{ editorState:booksEditorState}>()
 );
 
 // export const ADD_BOOK = 'ADD_BOOK';
