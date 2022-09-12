@@ -1,11 +1,18 @@
 <mat-card (click)="onEdit()">
-  <mat-card-title>
-    {{book$.title}}
-  </mat-card-title>
-  <mat-card-subtitle>
-    {{book$.publishingYear}}
-  </mat-card-subtitle>
+
+  <mat-card-header >
+    <img mat-card-avatar class="imgs" mat-card-image src="../../../assets/svg/blank-image.svg" alt="blank">
+<!--    <div mat-card-avatar class="example-header-image"></div>-->
+    <mat-card-title>
+      {{book$.title}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{book$.publishingYear}}
+    </mat-card-subtitle>
+  </mat-card-header>
+
   <mat-card-content>
+
     {{book$.id}}
   </mat-card-content>
 </mat-card>
